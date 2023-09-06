@@ -26,12 +26,6 @@ env = Environment(CXX='g++',
                   SWIGFLAGS=['-python', '-shadow', '-c++', '-py3'] )
 
 # Specify source files
-src_files = ['complex_number.cpp']
-swig_file = 'complex_number.i'
-
-# SWIG command
-swig_cmd = 'swig -python -c++ -o {} {}'.format(
-    'complex_number_wrap.cpp', swig_file)
 
 
 complex = env.SharedObject('complex_number.cpp')
