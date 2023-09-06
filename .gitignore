@@ -1,0 +1,9 @@
+/_complex_number.so
+/complex_number.os
+/complex_number_wrap.cc
+/complex_number_wrap.cpp
+/complex_number_wrap.os
+*~
+/.sconsign.dblite
+/__pycache__/
+/complex_number.py
