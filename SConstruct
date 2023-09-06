@@ -9,7 +9,6 @@ import sys
 #except ImportError:
 #    print("SWIG is not installed. Please install it before running this script.")
 #    sys.exit(1)
-
 # Define variables
 
 import sysconfig
@@ -20,10 +19,10 @@ CXX = 'g++'              # C++ compiler
 CXXFLAGS = ['-std=c++11', '-O3']  # Compiler flags (you can modify these)
 CPP_PATH= [ sysconfig.get_config_var('INCLUDEPY') ],
 # Set the environment
-env = Environment(CXX=CXX,
-                  CXXFLAGS=CXXFLAGS,
+env = Environment(CXX='g++',
+                  CXXFLAGS=['-std=c++11', '-O3'],
                   SHLIBPREFIX='_',
-                  CPPPATH=CPP_PATH,
+                  CPPPATH=[ sysconfig.get_config_var('INCLUDEPY') ],
                   SWIGFLAGS=['-python', '-shadow', '-c++', '-py3'] )
 
 # Specify source files
@@ -38,7 +37,7 @@ swig_cmd = 'swig -python -c++ -o {} {}'.format(
 complex = env.SharedObject('complex_number.cpp')
 
 # Create a shared library
-module = env.LoadableModule(target=MODULE_NAME, source=['complex_number.i', complex] )
+module = env.LoadableModule(target='_complex_number', source=['complex_number.i', complex] )
 
 # Define a clean target
 #Clean(module, BUILD_DIR)
