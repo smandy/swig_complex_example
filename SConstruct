@@ -9,8 +9,6 @@ env = Environment(CXX='g++',
                   SWIGFLAGS=['-python', '-shadow', '-c++', '-py3'] )
 
 # Specify source files
-
-
 complex = env.SharedObject('complex_number.cpp')
 
 # Create a shared library
